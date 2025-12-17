@@ -3,7 +3,7 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    'intro/welcome',
+    'intro',
     {
       type: 'category',
       label: 'Module 1 - ROS 2 Fundamentals',
