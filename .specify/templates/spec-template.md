@@ -84,21 +84,23 @@
 
 ### Functional Requirements
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]  
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
+so- **FR-001**: Content MUST be verifiable through official documentation, standards, or authoritative sources per Accuracy through Source Verification principle
+- **FR-002**: All technical claims MUST include direct verification from primary sources with proper citation format using inline links
+- **FR-003**: Content MUST follow Docusaurus conventions and Spec-Kit Plus patterns with syntax-highlighted code examples
+- **FR-004**: Source hierarchy MUST maintain minimum 60% primary sources (official documentation, technical specifications, API references) and maximum 40% secondary sources
+- **FR-005**: All code examples MUST be tested before publication with peer review by domain experts for technical accuracy
+- **FR-006**: Content MUST achieve college-level readability (Flesch-Kincaid Reading Ease score 50-70) and maintain consistent terminology
+- **FR-007**: All content MUST include proper accessibility features (alt text, semantic HTML structure) and SEO optimization
 
 *Example of marking unclear requirements:*
 
-- **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+- **FR-008**: Docusaurus version requirements [NEEDS CLARIFICATION: specific version not specified]
+- **FR-009**: Deployment frequency [NEEDS CLARIFICATION: update schedule not specified]
 
 ### Key Entities *(include if feature involves data)*
 
-- **[Entity 1]**: [What it represents, key attributes without implementation]
-- **[Entity 2]**: [What it represents, relationships to other entities]
+- **[Content Chapter]**: Represents a major section of the technical book with learning objectives, code examples, and authoritative sources
+- **[Code Example]**: Represents executable code blocks with language specification, testing validation, and source attribution
 
 ## Success Criteria *(mandatory)*
 

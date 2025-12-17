@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments -->
+  <arg name="model" default="$(find-pkg-share simple_mobile_robot)/urdf/simple_mobile_robot.urdf.xacro"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0.1"/>
+
+  <!-- Robot State Publisher -->
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" name="robot_state_publisher">
+    <param name="robot_description" value="$(command 'xacro $(var model)')"/>
+  </node>
+
+  <!-- Spawn robot in Gazebo -->
+  <node pkg="gazebo_ros" exec="spawn_entity.py"
+        args="-entity simple_mobile_robot -topic robot_description -x $(var x) -y $(var y) -z $(var z)">
+  </node>
+
+  <!-- Launch Gazebo -->
+  <include file="$(find-pkg-share gazebo_ros)/launch/empty_world.launch.py">
+    <arg name="world" value="$(find-pkg-share simple_mobile_robot)/worlds/simple_world.sdf"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+  </include>
+</launch>

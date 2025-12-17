@@ -31,7 +31,13 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+This plan must comply with the AI/Spec-Driven Book Creation Constitution, specifically:
+- Accuracy through Source Verification: All technical claims must be verified against authoritative sources
+- Documentation Standards Compliance: Follow Docusaurus conventions and proper citation format
+- Source Hierarchy Management: Maintain 60% primary sources, 40% secondary sources ratio
+- Quality Assurance Validation: Code examples must be tested, content peer-reviewed
+- Technical Constraint Adherence: Follow Docusaurus version consistency, browser compatibility, mobile responsiveness
+- Content Development Process Discipline: Follow structured phases with validation checkpoints
 
 ## Project Structure
 

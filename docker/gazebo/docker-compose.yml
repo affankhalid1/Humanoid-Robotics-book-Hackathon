@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  gazebo:
+    build:
+      context: .
+      dockerfile: docker/gazebo/Dockerfile
+    container_name: gazebo_simulation
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - ROS_DOMAIN_ID=0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+      - ./module-02-simulation:/workspace/module-02-simulation
+      - ./docs:/workspace/docs
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    stdin_open: true
+    tty: true
+    command: >
+      bash -c "
+        source /opt/ros/humble/setup.bash &&
+        source /workspace/install/setup.bash &&
+        export GAZEBO_MODEL_PATH=/workspace/module-02-simulation/chapter-02-robot-modeling/models:$$GAZEBO_MODEL_PATH &&
+        export GAZEBO_RESOURCE_PATH=/workspace/module-02-simulation:$$GAZEBO_RESOURCE_PATH &&
+        exec bash
+      "
+
+  gazebo_sim:
+    build:
+      context: .
+      dockerfile: docker/gazebo/Dockerfile
+    container_name: gazebo_sim_headless
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - ROS_DOMAIN_ID=0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+      - ./module-02-simulation:/workspace/module-02-simulation
+      - ./docs:/workspace/docs
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    stdin_open: true
+    tty: true
+    command: >
+      bash -c "
+        source /opt/ros/humble/setup.bash &&
+        source /workspace/install/setup.bash &&
+        export GAZEBO_MODEL_PATH=/workspace/module-02-simulation/chapter-02-robot-modeling/models:$$GAZEBO_MODEL_PATH &&
+        export GAZEBO_RESOURCE_PATH=/workspace/module-02-simulation:$$GAZEBO_RESOURCE_PATH &&
+        gz sim -r empty.sdf
+      "

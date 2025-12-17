@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  isaac-sim:
+    build:
+      context: .
+      dockerfile: docker/isaac-sim/Dockerfile
+    container_name: isaac-sim-env
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - ROS_DOMAIN_ID=0
+      - ISAAC_SIM_PATH=/isaac-sim
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+      - ./module-03-isaac:/workspace/module-03-isaac
+      - ./docs:/workspace/docs
+      - ./assets:/workspace/assets
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    stdin_open: true
+    tty: true
+    ports:
+      - "55555-55559:55555-55559/udp"
+      - "8211:8211/udp"
+    command: >
+      bash -c "
+        source /opt/ros/humble/setup.bash &&
+        source /isaac-sim/isaac-sim.sh &&
+        source /workspace/install/setup.bash &&
+        export ISAAC_SIM_PATH=/isaac-sim &&
+        export PYTHONPATH=/isaac-sim/python:$$PYTHONPATH &&
+        exec bash
+      "
+
+  isaac-sim-gui:
+    build:
+      context: .
+      dockerfile: docker/isaac-sim/Dockerfile
+    container_name: isaac-sim-gui
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+      - ./module-03-isaac:/workspace/module-03-isaac
+      - ./docs:/workspace/docs
+      - ./assets:/workspace/assets
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    stdin_open: true
+    tty: true
+    ports:
+      - "55555-55559:55555-55559/udp"
+      - "8211:8211/udp"
+    command: >
+      bash -c "
+        source /opt/ros/humble/setup.bash &&
+        source /isaac-sim/isaac-sim.sh &&
+        export ISAAC_SIM_PATH=/isaac-sim &&
+        export PYTHONPATH=/isaac-sim/python:$$PYTHONPATH &&
+        /isaac-sim/isaac-sim.sh
+      "
