@@ -11,18 +11,19 @@ const config = {
   // Set the production url of your site here
   url: 'https://affankhalid1.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub Pages: https://<USERNAME>.github.io/<REPO>/
   baseUrl: '/Humanoid-Robotics-book-Hackathon/',
 
   // GitHub pages deployment config.
   organizationName: 'affankhalid1',
   projectName: 'Humanoid-Robotics-book-Hackathon',
-  deploymentBranch: 'gh-pages',
-  trailingSlash: false,
 
-  // Fixes the build crash: allows the build to finish even if links are missing
-  onBrokenLinks: 'warn', 
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -35,11 +36,12 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Updated to your actual repository
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/affankhalid1/Humanoid-Robotics-book-Hackathon/tree/main/',
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: false, 
+        blog: false, // Disable blog if not needed
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -50,6 +52,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Physical AI Humanoid Robotics',
@@ -61,7 +64,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/affankhalid1/Humanoid-Robotics-book-Hackathon',
+            href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
             position: 'right',
           },
@@ -75,8 +78,7 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                // If this still gives a 404 on the site, check if docs/intro.md exists
-                to: '/docs/intro', 
+                to: '/docs/intro/welcome',
               },
             ],
           },
@@ -98,7 +100,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/affankhalid1/Humanoid-Robotics-book-Hackathon',
+                href: 'https://github.com/facebook/docusaurus',
               },
             ],
           },
