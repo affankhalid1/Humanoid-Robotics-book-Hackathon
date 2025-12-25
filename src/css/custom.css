@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-/* You can override the default Docusaurus styling with custom CSS classes */
+/* Import JetBrains Mono and Inter fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
 
 :root {
   --ifm-color-primary: #25c2a0;
@@ -16,6 +18,65 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --ifm-code-font-size: 95%;
+
+  /* HUD Theme Colors */
+  --hud-deep-obsidian: #050505;
+  --hud-cyber-green: #3fb950;
+  --hud-light-gray: #e0e0e0;
+}
+
+/* Base dark theme with obsidian background */
+html[data-theme='dark'] {
+  --ifm-background-color: var(--hud-deep-obsidian) !important;
+  --ifm-background-surface-color: #0a0a0a;
+}
+
+/* --- INFINITE GRID FIX --- */
+html, body {
+  
+  background-color: var(--hud-deep-obsidian) !important;
+  color: var(--hud-light-gray);
+  font-family: 'Inter', sans-serif;
+  
+  /* Subtle Two-Tone Grid */
+  background-image: 
+    linear-gradient(rgba(63, 185, 80, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 185, 80, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  
+  /* Key fixes for scrolling issues */
+  background-attachment: fixed; /* Grid stays still while content moves */
+  background-repeat: repeat;    /* Ensures pattern continues infinitely */
+  min-height: 100vh;           /* Ensures body fills the viewport */
+}
+
+/* Make all Docusaurus containers transparent so the grid shines through */
+.main-wrapper,
+[class*='docMainContainer'],
+.theme-doc-markdown,
+main,
+article {
+  background: transparent !important; /* Removes the "blanket" covering the grid */
+}
+/* ------------------------ */
+
+/* Style paragraph text with crisp white/light-gray */
+p {
+  color: var(--hud-light-gray);
+}
+
+/* Style subheaders (h2, h3) with neon green color */
+h2, h3 {
+  color: var(--hud-cyber-green);
+}
+
+/* Set up JetBrains Mono font for technical elements */
+code, pre, kbd, samp {
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Ubuntu Mono', monospace;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar__item, .menu__list-item, .theme-edit-this-page {
+  font-family: 'JetBrains Mono', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .docusaurus-highlight-code-line {
@@ -29,28 +90,125 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Custom styles for robotics book */
-.robotics-diagram {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0;
-  text-align: center;
+/* Customize Prism syntax highlighting */
+html[data-theme='dark'] {
+  --ifm-color-emphasis-300: var(--hud-light-gray);
+  --ifm-color-emphasis-700: #c9d1d9;
 }
 
-.code-example {
-  background-color: #f8f9fa;
-  border-left: 4px solid var(--ifm-color-primary);
-  padding: 12px 16px;
-  margin: 16px 0;
+/* Add green left-accent bar to code blocks */
+.prism-code {
+  border-left: 3px solid var(--hud-cyber-green) !important;
+  border-radius: 0 4px 4px 0 !important;
 }
 
+/* High-contrast syntax highlighting overrides */
+html[data-theme='dark'] .token.comment,
+html[data-theme='dark'] .token.block-comment {
+  color: #8b949e !important;
+}
+
+html[data-theme='dark'] .token.class-name,
+html[data-theme='dark'] .token.maybe-class-name,
+html[data-theme='dark'] .token.property-access,
+html[data-theme='dark'] .token.tag,
+html[data-theme='dark'] .token.number {
+  color: #79c0ff !important;
+}
+
+html[data-theme='dark'] .token.attr-name,
+html[data-theme='dark'] .token.builtin,
+html[data-theme='dark'] .token.keyword {
+  color: #ff7b72 !important;
+}
+
+html[data-theme='dark'] .token.attr-value,
+html[data-theme='dark'] .token.string {
+  color: #a5d6ff !important;
+}
+
+html[data-theme='dark'] .token.function,
+html[data-theme='dark'] .token.method {
+  color: #d2a8ff !important;
+}
+
+html[data-theme='dark'] .token.punctuation {
+  color: #c9d1d9 !important;
+}
+
+/* Sidebar styling with semi-transparent background and blur */
+.menu {
+  background-color: rgba(0, 0, 0, 0.3) !important; 
+  backdrop-filter: blur(10px);
+  border-right: 1px solid var(--hud-cyber-green);
+}
+
+.menu__list-item > a:hover,
+.menu__list-item > a:focus {
+  background-color: rgba(63, 185, 80, 0.1) !important;
+}
+
+.menu__list-item--active > a {
+  background: linear-gradient(to right, rgba(63, 185, 80, 0.2), transparent) !important;
+  border-left: 2px solid var(--hud-cyber-green) !important;
+  color: var(--hud-cyber-green) !important;
+}
+
+/* Primary button styling */
+.button--secondary {
+  background-color: var(--hud-cyber-green) !important;
+  border-color: var(--hud-cyber-green) !important;
+  color: black !important;
+}
+
+.button--secondary:hover {
+  background-color: #37a247 !important;
+  box-shadow: 0 0 15px var(--hud-cyber-green);
+}
+
+/* Secondary button styling */
+.button--outline {
+  background-color: transparent !important;
+  border: 2px solid var(--hud-cyber-green) !important;
+  color: var(--hud-cyber-green) !important;
+}
+
+.button--outline:hover {
+  background-color: rgba(63, 185, 80, 0.1) !important;
+  box-shadow: 0 0 15px var(--hud-cyber-green);
+}
+
+/* Technical module card hover animations */
+.technical-module {
+  transition: all 0.3s ease;
+}
+
+.technical-module:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(63, 185, 80, 0.3);
+  border-color: rgba(63, 185, 80, 0.4);
+}
+
+/* Accessibility and Focus indicators */
+*:focus {
+  outline: 2px solid var(--hud-cyber-green) !important;
+  outline-offset: 2px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .hud-hero { min-height: 60vh; padding: 1rem 0; }
+  .glitch-text { font-size: 2rem !important; }
+}
+
+/* Robotics book custom styles */
 .terminal-output {
   background-color: #1e1e1e;
   color: #d4d4d4;
-  font-family: 'Consolas', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   padding: 12px 16px;
   border-radius: 4px;
   overflow-x: auto;
   margin: 16px 0;
+  border: 1px solid rgba(63, 185, 80, 0.3);
 }

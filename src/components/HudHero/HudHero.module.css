@@ -1,0 +1,169 @@
+/* ==========================================================================
+   DEEP OBSIDIAN & CYBER-GREEN HUD - FINAL SEPARATION FIX
+   ========================================================================== */
+
+:root {
+  --hud-cyber-green: #3fb950;
+  --hud-deep-obsidian: #0d1117;
+  --hud-glitch-pink: #ff00c1;
+}
+
+/* --- HERO CONTAINER --- */
+.hud-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--hud-deep-obsidian) !important;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 0;
+  border-bottom: 1px solid rgba(63, 185, 80, 0.2);
+}
+
+/* --- STATUS SCANNER --- */
+.status-indicator {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-scanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pulsing-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--hud-cyber-green);
+  box-shadow: 0 0 10px var(--hud-cyber-green);
+  animation: pulse 1.5s infinite;
+}
+
+.status-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--hud-cyber-green);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* --- GLITCH TITLE --- */
+.glitch-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900 !important;
+  font-size: 4rem !important;
+  color: white !important;
+  text-shadow: 0 0 8px rgba(63, 185, 80, 0.5);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.hero__subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  font-size: 1.5rem;
+}
+
+/* --- THE NUCLEAR BUTTON FIX --- */
+/* We target the container to force a gap */
+.buttons {
+  display: flex !important;
+  gap: 25px !important; /* Forces physical space */
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  margin-top: 3rem !important;
+}
+
+/* We target ALL button classes to "un-fuse" them */
+.buttons .button, 
+.buttons .button--secondary, 
+.buttons .button--outline, 
+.buttons .button--lg {
+  /* 1. CRITICAL: Force all corners to round back out */
+  border-radius: 8px !important; 
+  
+  /* 2. CRITICAL: Reset the negative margins framework uses to join them */
+  margin: 0 !important; 
+  
+  /* HUD Aesthetic Settings */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.5rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-width: 2px !important;
+}
+
+/* Specific Style for 'Get Started' */
+.primary-button {
+  background-color: var(--hud-cyber-green) !important;
+  border-color: var(--hud-cyber-green) !important;
+  color: black !important;
+}
+
+.primary-button:hover {
+  background-color: #4cd460 !important;
+  box-shadow: 0 0 25px var(--hud-cyber-green);
+  transform: translateY(-3px);
+}
+
+/* Specific Style for 'GitHub' */
+.secondary-button {
+  background-color: transparent !important;
+  border-color: var(--hud-cyber-green) !important;
+  color: var(--hud-cyber-green) !important;
+}
+
+.secondary-button:hover {
+  background-color: rgba(63, 185, 80, 0.15) !important;
+  box-shadow: 0 0 25px rgba(63, 185, 80, 0.5);
+  transform: translateY(-3px);
+}
+
+/* --- OVERLAYS --- */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, rgba(63, 185, 80, 0.1), transparent);
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes scan {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .glitch-text { font-size: 2.5rem !important; }
+  .buttons {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  .buttons .button {
+    width: 90% !important;
+  }
+}

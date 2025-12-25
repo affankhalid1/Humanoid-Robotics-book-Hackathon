@@ -1,0 +1,68 @@
+# Theme API Contract for HUD Redesign
+
+# Since this is primarily a frontend styling project with no backend API,
+# this contract defines the theme configuration interface
+
+openapi: 3.0.0
+info:
+  title: Docusaurus HUD Theme API
+  version: 1.0.0
+  description: Theme configuration API for the Physical AI HUD interface
+
+paths:
+  /theme/config:
+    get:
+      summary: Get current theme configuration
+      responses:
+        '200':
+          description: Theme configuration
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  primaryColor:
+                    type: string
+                    example: "#3fb950"
+                  backgroundColor:
+                    type: string
+                    example: "#050505"
+                  fontFamily:
+                    type: string
+                    example: "JetBrains Mono"
+                  isDarkMode:
+                    type: boolean
+                    example: true
+                  gridPattern:
+                    type: object
+                    properties:
+                      size:
+                        type: number
+                        example: 40
+                      type:
+                        type: string
+                        example: "radial-dot"
+
+  /theme/apply:
+    post:
+      summary: Apply theme configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                theme:
+                  type: string
+                  enum: [hud-dark, hud-light]
+                customColors:
+                  type: object
+                  properties:
+                    primary:
+                      type: string
+                    background:
+                      type: string
+      responses:
+        '200':
+          description: Theme applied successfully

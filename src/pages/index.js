@@ -3,24 +3,14 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+// To this:
+import HudHero from '../components/HudHero';
+import TechnicalModule from '../components/TechnicalModule'
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/Humanoid-Robotics-book-Hackathon/docs/intro">
-            Get Started - 5 min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
+    <HudHero />
   );
 }
 
@@ -36,16 +26,28 @@ export default function Home() {
           <div className="container">
             <div className="row">
               <div className="col col--4">
-                <h3>Comprehensive Curriculum</h3>
-                <p>Learn through structured modules covering ROS 2, simulation, Isaac ROS, and VLA systems.</p>
+                <TechnicalModule
+                  moduleId="01"
+                  title="NERVE_CENTER"
+                  description="Learn through structured modules covering ROS 2, simulation, Isaac ROS, and VLA systems."
+                  to="/docs/intro/welcome"
+                />
               </div>
               <div className="col col--4">
-                <h3>Hands-on Projects</h3>
-                <p>Apply your knowledge with practical exercises and capstone projects.</p>
+                <TechnicalModule
+                  moduleId="02"
+                  title="MOTOR_CONTROL"
+                  description="Apply your knowledge with practical exercises and capstone projects."
+                  to="/docs/capstone/overview"
+                />
               </div>
               <div className="col col--4">
-                <h3>Physical AI Focus</h3>
-                <p>Understand how AI integrates with physical robotics systems.</p>
+                <TechnicalModule
+                  moduleId="03"
+                  title="SENSORY_FUSION"
+                  description="Understand how AI integrates with physical robotics systems."
+                  to="/docs/module-03-isaac/overview"
+                />
               </div>
             </div>
           </div>

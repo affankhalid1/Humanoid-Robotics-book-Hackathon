@@ -1,30 +1,215 @@
+/**
+ * Physical AI Humanoid Robotics - HUD Theme
+ * Custom CSS for Agentic AI Aesthetic
+ */
+
+/* 1. FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+/* 2. THEME VARIABLES */
+:root {
+  --ifm-color-primary: #3fb950; /* Cyber Green */
+  --ifm-color-primary-dark: #37a247;
+  --ifm-color-primary-darker: #339642;
+  --ifm-color-primary-darkest: #2a7d37;
+  --ifm-color-primary-light: #52c161;
+  --ifm-color-primary-lighter: #5cc56a;
+  --ifm-color-primary-lightest: #7ad085;
+  --ifm-code-font-size: 95%;
+
+  /* HUD Theme Palette */
+  --hud-deep-obsidian: #050505;
+  --hud-cyber-green: #3fb950;
+  --hud-light-gray: #e0e0e0;
+}
+
+/* 3. INFINITE GRID & BACKGROUND */
+html, body {
+  background-color: var(--hud-deep-obsidian) !important;
+  color: var(--hud-light-gray);
+  font-family: 'Inter', sans-serif;
+  
+  /* The Blueprint Grid */
+  background-image: 
+    linear-gradient(rgba(63, 185, 80, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 185, 80, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  
+  /* Persistence Fixes */
+  background-attachment: fixed; 
+  background-repeat: repeat;
+  min-height: 100vh;
+}
+
+/* 4. TRANSPARENCY OVERRIDES */
+/* This prevents Docusaurus containers from hiding your background grid */
+.main-wrapper,
+[class*='docMainContainer'],
+.theme-doc-markdown,
+main,
+article,
+.hero--primary {
+  background: transparent !important;
+}
+
+/* 5. HOMEPAGE HERO STYLE */
+/* Removes the solid teal banner and adds a techy border */
 .heroBanner {
-  padding: 4rem 0;
+  padding: 6rem 0;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  border-bottom: 1px solid rgba(63, 185, 80, 0.2);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroBanner h1 {
+  color: var(--hud-cyber-green);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(63, 185, 80, 0.4);
 }
 
-.buttons {
+/* 6. TECHNICAL MODULES (The Cards) */
+.technical-module {
+  background: rgba(10, 10, 10, 0.6) !important;
+  border: 1px solid rgba(63, 185, 80, 0.2) !important;
+  border-radius: 4px;
+  padding: 2rem;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+.technical-module:hover {
+  border-color: var(--hud-cyber-green) !important;
+  box-shadow: 0 0 25px rgba(63, 185, 80, 0.2);
+  transform: translateY(-5px);
+}
+
+.technical-module h3 {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--hud-cyber-green);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
 }
 
+.technical-module h3::before {
+  content: ">>";
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* 7. NAVIGATION & SIDEBAR */
+.navbar {
+  background-color: rgba(5, 5, 5, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(63, 185, 80, 0.3);
+}
+
+.menu {
+  background-color: transparent !important;
+  border-right: 1px solid rgba(63, 185, 80, 0.2);
+}
+
+.menu__list-item--active > a {
+  background: linear-gradient(to right, rgba(63, 185, 80, 0.1), transparent) !important;
+  border-left: 3px solid var(--hud-cyber-green) !important;
+  color: var(--hud-cyber-green) !important;
+}
+
+/* 8. CODE BLOCKS & TYPOGRAPHY */
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.prism-code {
+  border: 1px solid rgba(63, 185, 80, 0.2) !important;
+  border-left: 4px solid var(--hud-cyber-green) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+h2, h3 {
+  color: var(--hud-cyber-green);
+  font-family: 'JetBrains Mono', sans-serif;
+}
+
+/* 9. BUTTONS */
+.button--secondary {
+  background-color: var(--hud-cyber-green) !important;
+  border-color: var(--hud-cyber-green) !important;
+  color: #000 !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.button--secondary:hover {
+  box-shadow: 0 0 20px var(--hud-cyber-green);
+  opacity: 0.9;
+}
+
+/* 1. Fix the main spacing of the bottom section */
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 5rem 0; /* Adds significant space between hero and cards */
   width: 100%;
 }
 
-.featureImage {
-  height: 200px;
-  width: 200px;
+/* 2. Style the Technical Module containers (the 01, 02, 03 blocks) */
+/* This makes them look like glass cards on the grid background */
+.technical-module {
+  background: rgba(15, 15, 15, 0.8) !important; /* Semi-transparent black */
+  border: 1px solid rgba(63, 185, 80, 0.3) !important; /* Subtle green border */
+  border-radius: 8px;
+  padding: 2.5rem;
+  height: 100%;
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
+
+/* 3. Hover effect to make it feel "Active" */
+.technical-module:hover {
+  border-color: var(--hud-cyber-green) !important;
+  transform: translateY(-8px); /* Lift card up on hover */
+  box-shadow: 0 0 20px rgba(63, 185, 80, 0.2);
+}
+
+/* 4. Style the text inside the modules for better hierarchy */
+.technical-module h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--hud-cyber-green);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.technical-module p {
+  color: #b0b0b0; /* Dimmed gray for description text */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 5. Style the "Explore Module" link */
+.technical-module a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--hud-cyber-green);
+  text-decoration: none;
+}
+
+.technical-module a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
