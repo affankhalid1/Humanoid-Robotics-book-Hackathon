@@ -63,9 +63,10 @@ const config = {
       navbar: {
         title: 'Physical AI Humanoid Robotics',
         items: [
+         // ✅ This forces the link to go to the actual file
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            type: 'doc',
+            docId: 'intro/welcome', // Points explicitly to docs/intro/welcome.md
             position: 'left',
             label: 'Documentation',
           },
