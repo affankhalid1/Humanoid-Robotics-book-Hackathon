@@ -210,4 +210,5 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
 
 ## Recent Changes
+- 003-rag-chatbot: Added [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
 - 002-docusaurus-hud-redesign: Added [if applicable, e.g., PostgreSQL, CoreData, files or N/A]

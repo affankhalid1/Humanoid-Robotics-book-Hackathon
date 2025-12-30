@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.specify/scripts/bash/create-new-feature.sh --json \"You are an Expert Agentic AI Developer specialized in building intelligent systems for humanoid robotics. Your objective is to build and embed a professional, production-grade RAG chatbot directly into the existing Docusaurus frontend of the \"\"Physical AI Humanoid Robotics\"\" book.\n\nSystem & Documentation Access: You are connected to the context7 MCP server. You MUST use it to retrieve and strictly follow the latest documentation for:\n\nAgent Core: OpenAI Agents Python SDK.\n\nDatabase: Neon Serverless Postgres.\n\nVector Store: Qdrant.\n\nProject tive Selection: Implement a feature where the chatbot can answer questions based only on text currently selected by the user within the Docusaurus pages.\n\nBackend & Persistence:\n\nBuild a FastAPI backend to serve the agent and handle RAG retrieval.\n\nPersistence: Use Neon Serverless Postgres to log chResources:\n\nBook Content: Ingest all Markdown files from the existing project''s docs/ directory.\n\nSource Code: Robotic module code snippets are located in specific root folders \\(e.g., module-01-ros2/, module-02-simulation/\\).\n\nReference Repository: Refer to affankhalid1/Humanoid-Robotics-book-Hackathon for structural context.\n\nTechnical Execution Requirements:\n\nHybrid Local Embedding Pipeline \\(via Ollama\\):\n\nImplement a script to parse the docs/ directory and module folders, strictly differentiating between prose and code blocks.\n\nProse: Embed using bge-m3:latest via local Ollama.\n\nCode: Embed using jina-code-embeddings-0.5b via local Ollama to preserve structural technical logic.\n\nStorage: Index all vectors in Qdrant Cloud Free Tier with rich metadata including chapter names, module paths, and content types.\n\nLLM Reasoning Engine:\n\nConfigure the OpenAI Agents SDK to use Google Gemini 2.0 Flash as the primary LLM reasoning engine.\n\nThe agent must act as a \"\"Robotics Expert Thought Partner,\"\" providing insightful,at history, user session data, and RAG citations.\n\nQuality Standards:\n\nWrite clean, asynchronous, and well-structured code.\n\nEnsure the implementation is accurate and follows the specific SDK versions verified by context7.\" --number 3 --short-name \"rag-chatbot\")",
+      "Bash(.specify/scripts/bash/setup-plan.sh --json)",
+      "Bash(.specify/scripts/bash/update-agent-context.sh claude)",
+      "Bash(.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)",
+      "Bash(git rev-parse --git-dir)",
+      "Bash(pip install aiohttp)",
+      "Bash(pip install \"uvicorn[standard]\")",
+      "Bash(python -m uvicorn src.main:app --host 0.0.0.0 --port 8000)",
+      "Bash(/c/Users/PC/AppData/Local/Programs/Python/Python310/python -m pip install uvicorn)",
+      "Bash(pip install -r backend/requirements.txt)",
+      "Bash(/c/Users/PC/AppData/Local/Programs/Python/Python310/python -m pip install fastapi==0.104.1 uvicorn==0.24.0)",
+      "Bash(/c/Users/PC/AppData/Local/Programs/Python/Python310/python -m pip install -r requirements.txt)"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+.text-selection-menu {
+  position: fixed;
+  z-index: 10000;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  padding: 4px;
+  display: flex;
+  gap: 2px;
+}
+
+.selection-menu-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.selection-menu-btn:hover {
+  background: #0056b3;
+}
+
+.selection-menu-btn.clear-selection-btn {
+  background: #6c757d;
+}
+
+.selection-menu-btn.clear-selection-btn:hover {
+  background: #495057;
+}
+
+.selected-text-display {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 12px;
+  position: relative;
+}
+
+.selected-text-display strong {
+  color: #495057;
+}
+
+.selected-text-display button {
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 10px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.selected-text-display button:hover {
+  background: #c82333;
+}
